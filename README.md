@@ -17,15 +17,23 @@ bem como fenômenos de transição de fase.
 
 ## Algoritmo de Metropolis
 
-Para implementar o algoritimo descrito na seção anterior, foi criada a classe \textit{rede}, que possui atributos e métodos para calcular e armazenar as informações termodinâmicas da rede.
+Iremos simular um sistema com todos os spins inicialmente com valor 1, submetidos a um banho térmico à
+uma temperatura T , poranto a evolução temporal do sistema irá tender ao equilibrio. Para simular a troca
+de energia entre o sistema e o banho térmico foi usado o método de Monte Carlo, que consiste em uma
+abordagem estocástica para o problema. A evolução do sistema acontece usado o algorı́timo de Metropolis,
+que consiste em:
+1. Escolher um spin e calcular E f lip , a energia necessária para mudar o seu estado
+2. Se E f lip é negativo, o spin muda de valor
+3. Se E f lip é positivo é gerado um número aleatório entre 0 e 1. Se ≤ e −E f lip /(K B T ) , onde K B é a
+constante de Boltzmann e T a temperatura do sistema, o spin muda de valor, do contrário permanece
+inalterado.
 
-O método \textit{sweep} percorre a rede, elemento por elemento e calcula as energias do estado atual de cada spin ($E_1$), que consiste no negativo da soma do produto do spin pelos seus quatro vizinhos mais próximos, e a energia do estado com o spin invertido $E_2$. Para simular uma rede infinita foram aplicadas condições periódicas de fronteira, ou seja, os spins posicionados nas extremidades de uma linha ou coluna da matriz consideram como vizinho o spin posicionado na outra extremidade. 
+Para implementar o algoritimo de Metropolis, foi implementada a classe 'rede', que possui atributos e métodos para calcular e armazenar as informações termodinâmicas da rede.
 
-Em seguida, é feito o cálculo da energia $E_{flip} = E_2 - E_1$, e aplicado a condição descrita na seção anterior: Se $E_{flip} \leq 0$ o valor do spin é multiplicado por $-1$, do contrário é gerado um número aleatório $r$, uniformemente distribuído entre 0 e 1, e se $r \leq e^{-(E_2-E_1)/T}$ o valor é multiplicado por $-1$.
+O método 'sweep' percorre a rede, elemento por elemento e calcula as energias do estado atual de cada spin, que consiste no negativo da soma do produto do spin pelos seus quatro vizinhos mais próximos, e a energia do estado com o spin invertido. Para simular uma rede infinita foram aplicadas condições periódicas de fronteira, ou seja, os spins posicionados nas extremidades de uma linha ou coluna da matriz consideram como vizinho o spin posicionado na outra extremidade. 
 
-Em seguida é somada a contribuição de cada spin para a energia do sistema e a magnetização total, definida simplesmente como a soma de todos os valores de spin:
-\begin{equation}
-M = \sum s_i
-\end{equation}
-
-Por fim, a magnetização é dividida pelo número de spins para normalizar o valor, e a energia é dividida por 2 pois cada par de spin é considerado duas vezes.
+A evolução do sistema acontece usado o algorı́timo de Metropolis,
+que consiste em:
+1. Escolher um spin e calcular a energia necessária para mudar o seu estado
+2. Se tal energia for negativa, o spin muda de valor
+3. Se for positiva, é gerado um número aleatório entre 0 e 1, e o estado do spin é determinado pela distribuição de Boltzman
