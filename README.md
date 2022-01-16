@@ -1,12 +1,12 @@
 # Algoritmo de Metropolis para o modelo de Ising
 
-Código em C++ para implementar o algoritmo de metrópole para solucionar o modelo de Ising para 
+Código em C++ para implementar o algoritmo de metrópole para solucionar o modelo de Ising 
 
 
 ## Introdução
 
 O modelo de Ising, que recebe o nome em homenagem a Ernest Ising, foi proposto como uma forma de
-estudar fenômenos magnéticos em materiais, e sua relação com a temperatura. O modelo consiste em uma
+estudar fenômenos magnéticos em materiais e sua relação com a temperatura. O modelo consiste em uma
 rede (matriz) onde cada sı́tio é ocupado por um elemento, (chamados aqui de spin), que podem assumir apenas dois
 valores, simulando o comportamento da componente z de um spin eletrônico. A evolução temporal de cada
 spin depende de seu próprio valor e do valor de seus vizinhos mais próximos, e também da temperatura
