@@ -11,7 +11,7 @@ rede (matriz) onde cada sı́tio é ocupado por um elemento, (chamados aqui de s
 valores, simulando o comportamento da componente z de um spin eletrônico. A evolução temporal de cada
 spin depende de seu próprio valor e do valor de seus vizinhos mais próximos, e também da temperatura
 do sistema. Dessa forma, se houver um padrão de alinhamento entre os spins ocorre o surgimento de um
-momento magnético total do sistema. O código implementa o modelo descrito assima e permite realizar simulações para diferentes sistemas, de forma a estudar algumas
+momento magnético total do sistema (o material se comporta como um imã). O código implementa o modelo descrito assima e permite realizar simulações para diferentes sistemas, de forma a estudar algumas
 propriedades termodinâmicas como a magnetização e a energia em função do tempo e da temperatura,
 bem como fenômenos de transição de fase.
 
@@ -19,7 +19,7 @@ bem como fenômenos de transição de fase.
 
 Para executar o algoritimo de Metropolis, foi implementada a classe 'rede', que possui atributos e métodos para calcular e armazenar as informações termodinâmicas da rede.
 
-O método 'sweep' percorre a rede, elemento por elemento e calcula a energia do estado atual de cada spin, que consiste no negativo da soma do produto do spin pelos seus quatro vizinhos mais próximos. Para simular uma rede infinita foram aplicadas condições periódicas de fronteira, ou seja, os spins posicionados nas extremidades de uma linha ou coluna da matriz consideram como vizinho o spin posicionado na outra extremidade. 
+O método 'sweep' percorre a rede, elemento por elemento e calcula a energia do estado atual de cada spin, que consiste no negativo da soma do produto do spin pelos seus quatro vizinhos mais próximos. Para simular uma rede infinita foram aplicadas condições periódicas de contorno, ou seja, os elementos posicionados nas extremidades de uma linha ou coluna da matriz consideram como vizinho o elemento posicionado na outra extremidade. 
 
 A evolução do sistema acontece usado o algorı́timo de Metropolis,
 que consiste em:
